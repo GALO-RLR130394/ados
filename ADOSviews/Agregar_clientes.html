@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+    <html lang="es" ng-app="TodoApp">
+    <meta charset="utf-8">
+      <script type="text/javascript" src="scripts/angular/angular.min.js"></script>
+    <script type="text/javascript" src="scripts/miAngular.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+
+
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <title>Ados Arte Público</title>
+
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+  <nav>
+    <ul id="dropdown1" class="dropdown-content">
+    </ul>
+    <ul id="dropdown2" class="dropdown-content">
+    </ul>
+    <div class="nav-wrapper blue"> <a href="#" class="brand-logo"></a><img class="responsive-img" style="width: 100px;" src="http://adosartepublico.com/wp-content/uploads/2013/07/Logo_ADOS_medio.png"/> <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a a class="dropdown-button" data-beloworigin="true" data-hover="true" data-constrainwidth="false" href="#!" data-activates="dropdown2">Portfolio</a></li>
+        <li><a class="dropdown-button" data-beloworigin="true" data-hover="true" data-constrainwidth="false" href="#!" data-activates="dropdown1">Services</a></li>
+      </ul>
+      <ul id="mobile-demo" class="side-nav">
+        <li class="no-padding">
+          <ul class="collapsible collapsible-accordion">
+            <li class="bold"><a class="collapsible-header  waves-effect waves-teal" href="#">Home</a>
+              <div class="collapsible-body">
+                <ul>
+                </ul>
+              </div>
+            </li>
+            <li class="bold"><a class="collapsible-header  waves-effect waves-teal" href="#">Inicio</a>
+              <div class="collapsible-body">
+                <ul>
+                </ul>
+              </div>
+            </li>
+            <li class="bold"><a class="collapsible-header  waves-effect waves-teal" href="#">Acerca de</a>
+              <div class="collapsible-body">
+                <ul>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <style>
+    body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1 0 auto;
+    }
+
+    body {
+      background: #fff;
+    }
+
+    .input-field input[type=text]:focus + label,
+    .input-field input[type=text]:focus + label,
+    .input-field input[type=text]:focus + label,
+    .input-field input[type=text]:focus + label,
+    .input-field input[type=password]:focus + label {
+      color: #e91e63;
+    }
+
+    .input-field input[type=text]:focus,
+    .input-field input[type=text]:focus,
+    .input-field input[type=text]:focus,
+    .input-field input[type=text]:focus,
+    .input-field input[type=password]:focus {
+      border-bottom: 2px solid #e91e63;
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body background="" ng-controller="FuncionesTodo">
+  <div class="section"></div>
+  <main>
+    <center>
+    <img class="responsive-img" style="width: 200px;" src="http://adosartepublico.com/wp-content/uploads/2013/07/Logo_ADOS_medio.png"/>
+      <div class="section"></div>
+
+      <h5 class="indigo-text">Clientes</h5>
+      <div class="section"></div>
+
+      <div class="container">
+        <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 20px 40px 0px 48px; border: 1px solid #EEE;">
+
+          <form class="col s12" method="post">
+            <div class='row'>
+              <div class='col s12'>
+              </div>
+            </div>
+
+          <form action="#">
+          <label>Tipo de Cliente</label>
+              <p>
+         <input name="group1" type="radio" id="test1" ng-model="clientes.tipoc" value="Publico" />
+         <label for="test1">Público</label>
+              </p>
+             <p>
+             <input name="group1" type="radio" id="test2" ng-model="clientes.tipoc" value="Maquiladora" />
+             <label for="test2">Maquiladora</label>
+              </p>
+              <p>
+             <input name="group1" type="radio" id="test3" ng-model="clientes.tipoc" value="Empresarial" />
+             <label for="test3">Empresarial</label>
+              </p>
+            <p>
+         </form>
+
+            <div class='row'>
+              <div class='input-field col s12'>
+               <i class="material-icons prefix">face</i>
+                <input class='validate' type='text' name='text' id='text' ng-model="clientes.nombrec"/>
+                <label for='text'>Introduce Nombre</label>
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='input-field col s12'>
+              <i class="material-icons prefix">perm_identity</i>
+                <input class='validate' type='text' name='text' id='text' ng-model="clientes.apellidop" />
+                <label for='text'>Introduce Apellido P</label>
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='input-field col s12'>
+              <i class="material-icons prefix">perm_identity</i>
+                <input class='validate' type='text' name='text' id='text' ng-model="clientes.apellidom"/>
+                <label for='text'>Introduce Apellido M</label>
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='input-field col s12'>
+              <i class="material-icons prefix">phone</i>
+                <input class='validate' type="number" name='text' id='text' ng-model="clientes.telefono"/>
+                <label for='text'>Introduce Telefono</label>
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='input-field col s12'>
+               <i class="material-icons prefix">home</i>
+                <input class='validate' type='text' name='text' id='text' ng-model="clientes.domicilio"/>
+                <label for='text'>Introduce Domicilio</label>
+              </div>
+              </div>
+
+               <div class='row'>
+              <div class='input-field col s12'>
+               <i class="material-icons prefix">email</i>
+                <input class='validate' type='email' name='email' id='email' ng-model="clientes.email"/>
+                <label for='email'>Introduce Email</label>
+              </div>
+              </div>
+
+              <div class='row'>
+              <div class='input-field col s12'>
+               <i class="material-icons prefix">lock</i>
+                <input class='validate' type='text' name='text' id='text' ng-model="clientes.rfc"/>
+                <label for='text'>Introduce RFC</label>
+              </div>
+
+              <label style='float: right;'>
+               <a class='pink-text' href='ordenes.html'><b>Regresar a Ordenes</b></a>
+      </label>
+         </div>
+            <br/>
+            <center>
+              <div class='row'>
+                <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo' ng-click="agClientes()">Guardar Cliente</button>
+              </div>
+            </center>
+          </form>
+        </div>
+      </div>
+
+    </center>
+    <div class="section"></div>
+    <div class="section"></div>
+  </main>
+   
+
+ <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+<!-- Compiled and minified JavaScript --> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script> 
+<script>
+ $(".button-collapse").sideNav();
+</script>
+</body>
+</html>

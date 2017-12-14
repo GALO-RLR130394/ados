@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+    <html lang="es" ng-app="TodoApp">
+    <meta charset="utf-8">
+      <script type="text/javascript" src="scripts/angular/angular.min.js"></script>
+    <script type="text/javascript" src="scripts/miAngular.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+
+
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <title>Ados Arte Público</title>
+
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+   <nav class="blue">
+    <center>
+    <div class="nav-wrapper">
+    <a href="#" class="brand-logo center">Ados Arte Público</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+     <li><a href="">Consulta Ordenes</a></li>
+        </ul>
+         <ul  ng-init="printSession()" id="nav-mobile" class="right hide-on-med-and-down">
+     <li><a>{{"Usuario: "+debug.usuario}}</a></li>
+     </ul>
+      <ul   id="nav-mobile" class="right hide-on-med-and-down">
+     <li><a href="" ng-click="logout()">Cerrar Sesión</a></li>
+        </ul>
+    </div>
+    </center> 
+    </nav>
+
+
+  <style>
+    body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1 0 auto;
+    }
+
+    body {
+      background: #fff;
+    }
+
+    .input-field input[type=text]:focus + label,
+    .input-field input[type=text]:focus + label,
+    .input-field input[type=text]:focus + label,
+    .input-field input[type=text]:focus + label,
+    .input-field input[type=password]:focus + label {
+      color: #e91e63;
+    }
+
+    .input-field input[type=text]:focus,
+    .input-field input[type=text]:focus,
+    .input-field input[type=text]:focus,
+    .input-field input[type=text]:focus,
+    .input-field input[type=password]:focus {
+      border-bottom: 2px solid #e91e63;
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body background="" ng-controller="FuncionesTodo">
+  <div class="section"></div>
+  <main>
+    <center>
+      <img class="responsive-img" style="width: 200px;" src="http://adosartepublico.com/wp-content/uploads/2013/07/Logo_ADOS_medio.png"/>
+      <div class="section"></div>
+
+      <h5 class="indigo-text">Agregar Producto</h5>
+      <div class="section"></div>
+      <div class="container">
+        <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+
+          <form class="col s12" method="post">
+            <div class='row'>
+              <div class='col s12'>
+              </div>
+            </div>
+             <p>
+
+               <input name="impreso" type="radio" id="impreso"  ng-model="productos.tipo" value="Impreso a gran Formato" onclick="document.getElementById('ph').style.display='none';document.getElementById('pm2').style.display='block';"/>
+               <label for="impreso">Impresion a gran formato</label>
+             </p>
+             <p>
+               <input name="papeleria" type="radio" id="papeleria" ng-model="productos.tipo" value="papeleria" onclick="document.getElementById('pm2').style.display='none';document.getElementById('ph').style.display='block';"/>
+               <label for="papeleria">Papeleria</label>
+             </p>
+             <p>
+           
+            
+            <div class='row'>
+              <div class='input-field col s12'>
+              <i class="material-icons prefix">assignment</i>
+              <input class='validate' type='text' name='nombre' id='nombre' ng-model="productos.nombrep"/>
+                <label for='text'>Nombre de Producto</label>
+                </div>
+            </div> 
+
+            <div class='row'>
+              <div class='input-field col s12' id="pm2" style="display:none;">
+              <i class="material-icons prefix">filter_none</i>
+              <input class='validate' type='number' step="5" name='Preciom' id='numberi' ng-model="productos.precio" />
+                <label for='numberi'>Precio * m2</label>
+                </div>
+            </div>
+
+            <div class='row'>
+              <div class='input-field col s12' id="ph" style="display:none;">
+              <i class="material-icons prefix">filter_none</i>
+              <input class='validate' type='number' name='number1' id='Precioh' ng-model="productos.precio" step="1"/>
+              <label for='Precioh'>Precio * Hojas</label>
+              </div>
+                
+              </div>
+              <label style='right;'>
+								<a class='pink-text' href='ordenes.html'><b>Inicio</b></a>
+			</label>
+            
+</form>
+            <br />
+            <center>
+              
+              <div class='row'>
+                <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo' ng-click="agregarProd()">Guardar Producto</button>
+              </div>
+            </center>
+        </div>
+      </div>
+    </center>
+
+    <div class="section"></div>
+    <div class="section"></div>
+  </main>
+
+        
+
+     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+    </body>
+  </html>

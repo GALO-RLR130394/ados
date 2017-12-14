@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+  <html lang="es" ng-app="TodoApp" ng-init="listarEmp()">
+    <meta charset="utf-8">
+      <script type="text/javascript" src="scripts/angular/angular.min.js"></script>
+    <script type="text/javascript" src="scripts/miAngular.js"></script>
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <title>Ados Arte Público</title>
+
+    <head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+       <nav class="blue">
+    <center>
+    <div class="nav-wrapper">
+    <a href="#" class="brand-logo center">Ados Arte Público</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+     <li><a href="ordenesvista.html">Consulta Ordenes</a></li>
+        </ul>
+         <ul  ng-init="printSession()" id="nav-mobile" class="right hide-on-med-and-down">
+     <li><a>{{"Usuario: "+debug.usuario}}</a></li>
+     </ul>
+      <ul   id="nav-mobile" class="right hide-on-med-and-down">
+     <li><a href="" ng-click="logout()">Cerrar Sesión</a></li>
+        </ul>
+    </div>
+    </center> 
+    </nav>
+
+      </head>
+        
+  <body ng-controller="FuncionesTodo" onload="document.getElementById('ter').style.display='block' ;" >
+      
+        <div class="container center">
+       <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 80px 80px 0px 60px; border: 10px solid #EEE;">
+      <img class="responsive-img" style="width: 200px;" src="http://adosartepublico.com/wp-content/uploads/2013/07/Logo_ADOS_medio.png"/>
+      <div class="section">
+        <h5 class="indigo-text">Generar Ordenes</h5>
+      </div>
+
+      
+      <div class="section" ng-init="listarProd()">
+        <div class="row">
+          
+             <div class="input-field col s10 m10">
+             <i class="material-icons prefix">search</i>
+              <input type="text" id="buscar" ng-model="buscarp">
+               <label for="buscar"> Busca Un Producto</label>
+            </div>
+             <div class="col s2 m2">
+                <a class="btn-floating " href="Agregar_Productos.html"><i class="material-icons">add</i></a>
+              </div>
+
+          </div>
+             <div class="row">
+              <div class="collection" ng-repeat="selects in productos | filter:buscarp " id="colp">
+        <a href="#!" class="collection-item" ng-click="getIdPr(selects.id_producto)" ng-model="selects">{{selects.nombrep}}</a>
+       
+      </div>
+             
+    </div>
+      <div class='row'>
+              <div class='input-field col s12 m4' id="al" style="display:block;">
+              <i class="material-icons prefix">filter_none</i>
+              <input class='validate' type='number' step="" name='al' id='alto'  />
+                <label for='al'>Alto</label>
+                </div>
+            
+              <div class='input-field col s12 m4' id="anch" style="display:block;">
+              <i class="material-icons prefix">filter_none</i>
+              <input class='validate' type='number' step="1" name='ac' id='acho'  />
+                <label for='ac'>Ancho</label>
+                </div>
+                
+                <div class='input-field col s6 m4'  style="display:block;">
+                <label id="ret"></label>
+                </div>
+            </div>
+
+    </div>
+    <div class="section">
+      <div class="row">
+         <div class="col s12"> 
+      <div >
+          <select style="display:none;" ng-model="term"  ng-options="term.nombre for term in terminados" id="ter" >
+   <option  disabled selected value="" >Terminadados.</option>
+              </select>
+    </div>
+      </div>
+      </div>
+      
+    </div>
+    <div class="section" ng-init="listarClien()" >
+            
+        <div class="row">
+          
+             <div class="input-field col s10 m10">
+             <i class="material-icons prefix">search</i>
+              <input type="text" id="buscarc" ng-model="buscarc">
+               <label for="buscarc">Busca Un Cliente</label>
+            </div>
+            <div class="col s2 m2">
+                <a class="btn-floating " href="Agregar_clientes.html"><i class="material-icons">add</i></a>
+              </div>
+
+          </div>
+
+
+
+                  <div class="row">
+              <div class="collection" ng-repeat="selclie in clientes | filter:buscarc " id="colc">
+        <a href="#!" class="collection-item" ng-click="getIdCl(selclie.id_cliente)" ng-model="selclie">{{selclie.nombrec}}</a>
+       
+      </div>
+             
+    </div>
+          
+      
+      </div>
+      
+       
+               </div>
+               <div class="section">
+                         <div class="col s12 " center style="display:none;" id="card1" >
+         <div class="row ">
+    <div class="col s12 m6">
+      <div class="card ">
+        <div class="card-image">
+          <output id="list">
+           <img src="http://adosartepublico.com/wp-content/uploads/2013/07/Logo_ADOS_medio.png">
+          </output>
+          <span class="card-title">{{selclie.nombrec}}</span>
+          <form action="#">
+    <div class="file-field input-field">
+      <div class="btn red">
+        <i class="material-icons">add_to_photos</i>
+        <input type="file" id="files" name="files[]">
+      </div>
+      <div class="file-path-wrapper" align="right" id='path' name="Trabajo">
+        <input class="file-path validate" align="right"   type="text">
+      </div>
+    </div>
+  </form>
+        </div>
+        <div class="card-content " align="left">
+          <p>Nombre: {{selclie.nombrec+" "+selclie.apellidop+" "+selclie.apellidom}}</p>
+         
+          <p>Domicilio: {{selclie.domicilio}}</p>
+        
+          <p>Telefono: {{selclie.telefono}}</p>
+          
+          <p>E-mail: {{selclie.email}}</p>
+        
+          <p>RFC: {{selclie.rfc}}</p>
+          <br>
+        </div>
+      </div>
+    </div>
+
+   <div class="col s12 m6"></div>
+        <div class="col s12 m6 " center style="display:none;" id="card" >
+        
+    <div class="card " >
+      <h4 class="indigo-text header center" >{{selects.nombrep}}</h4>
+      <div class="card-image" id="cardIm">
+        <img src="images/arte.jpg">
+      </div>
+      <div class="card-stacked"  id="cnt">
+        <div class="card-content" id="cardCo" align="left">
+          <p>
+          Tipo: {{selects.tipo}}
+          </p>
+          <br>
+          <p>Precio: {{selects.precio}}</p>
+          <br>
+          <br>
+          <p>Terminados: {{term.nombre + "  "+"$"+ term.precio}}</p>
+          <br>
+          <br>
+          <p>Total a pagar: <p id="tot"></p> </p>
+          
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+               </div>
+
+
+  </div>
+
+   <center>
+              <div class='row'>
+                <div class="col s4"></div>
+                <div class="col s4">
+                  <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo' ng-click="genOrden()">Generar orden</button>
+                </div>
+                
+                <div class="col s4"></div>
+              </div>
+            </center>
+
+    </div>
+    </div>
+
+       
+
+      <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script type="text/javascript">
+        $('#ret').hide();
+        $('#colp').hide();
+        $('#colc').hide();
+         $(document).ready(function(){
+    $('ul.tabs').tabs('select_tab', ' tab');
+    $('ul.tabs').tabs('select_tab', 'tabc');
+
+  });
+
+        $(document).ready(function () {
+          // body...
+          $('#acho').keyup(function(){
+            var str = document.getElementById('acho').value;
+            var str2 = document.getElementById('alto').value;
+            var por;
+            por = str*str2;
+            $('#ret').show();
+        document.getElementById('ret').innerHTML=por+' '+'m2';
+        document.getElementById('tot').innerHTML=por;
+          
+          });
+          
+        });
+       $(document).ready(function () {
+          // body...
+          $('#buscar').keyup(function(){
+           
+          var buscar= document.getElementById('buscar').value;
+
+             if (buscar==='') {
+              $('#colp').hide();
+             } else {
+              $('#colp').show();
+             }
+          
+          });
+          
+        });
+            $(document).ready(function () {
+          // body...
+          $('#buscarc').keyup(function(){
+           
+          var buscarc= document.getElementById('buscarc').value;
+
+             if (buscarc==='') {
+              $('#colc').hide();
+              $('#card').hide();
+              $('#card1').hide();
+             } else {
+              $('#colc').show();
+              $('#card').show();
+              $('#card1').show();
+             }
+          
+          });
+          
+        });
+      </script>
+       <script>
+              function archivo(evt) {
+                  var files = evt.target.files; // FileList object
+             
+                  // Obtenemos la imagen del campo "file".
+                  for (var i = 0, f; f = files[i]; i++) {
+                    //Solo admitimos imágenes.
+                    if (!f.type.match('image.*')) {
+                        continue;
+                    }
+             
+                    var reader = new FileReader();
+             
+                    reader.onload = (function(theFile) {
+                        return function(e) {
+                          // Insertamos la imagen
+                         document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
+                        };
+                    })(f);
+             
+                    reader.readAsDataURL(f);
+                  }
+              }
+             
+              document.getElementById('files').addEventListener('change', archivo, false);
+      </script>
+      <script>
+function buscarSelect()
+{
+  // creamos un variable que hace referencia al select
+  var select=document.getElementById("sl");
+ 
+  // obtenemos el valor a buscar
+  var buscar=document.getElementById("buscar").value;
+ 
+  // recorremos todos los valores del select
+  for(var i=1;i<select.length;i++)
+  {
+    if(select.options[i].text==buscar)
+    {
+      // seleccionamos el valor que coincide
+      select.selectedIndex=i;
+    }
+  }
+}
+</script>
+
+    </body>
+    </html>

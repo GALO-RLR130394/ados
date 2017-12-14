@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <nav>
+    <ul id="dropdown1" class="dropdown-content">
+    </ul>
+    <ul id="dropdown2" class="dropdown-content">
+    </ul>
+    <div class="nav-wrapper blue"> <a href="#" class="brand-logo"></a><img class="responsive-img" style="width: 100px;" src="http://adosartepublico.com/wp-content/uploads/2013/07/Logo_ADOS_medio.png"/> <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a a class="dropdown-button" data-beloworigin="true" data-hover="true" data-constrainwidth="false" href="#!" data-activates="dropdown2">Portfolio</a></li>
+        <li><a class="dropdown-button" data-beloworigin="true" data-hover="true" data-constrainwidth="false" href="#!" data-activates="dropdown1">Services</a></li>
+      </ul>
+      <ul id="mobile-demo" class="side-nav">
+        <li class="no-padding">
+          <ul class="collapsible collapsible-accordion">
+            <li class="bold"><a class="collapsible-header  waves-effect waves-teal" href="#">Home</a>
+              <div class="collapsible-body">
+                <ul>
+                </ul>
+              </div>
+            </li>
+            <li class="bold"><a class="collapsible-header  waves-effect waves-teal" href="#">Inicio</a>
+              <div class="collapsible-body">
+                <ul>
+                </ul>
+              </div>
+            </li>
+            <li class="bold"><a class="collapsible-header  waves-effect waves-teal" href="#">Acerca de</a>
+              <div class="collapsible-body">
+                <ul>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+</head>
+<body>
+<style>
+html,
+body,
+.login-box {
+  height: 100%;
+}
+</style>
+<div class="valign-wrapper row login-box">
+  <div class="col card hoverable s10 pull-s1 m6 pull-m3 l4 pull-l4">
+    <form>
+      <div class="card-content">
+        <span class="card-title">Iniciar Sesión Admin</span>
+        <div class="row">
+          <div class="input-field col s12">
+          <i class="material-icons prefix">account_circle</i>
+            <label for="text">Nombre de Admin</label>
+            <input type="text" class="validate" name="text" id="text" />
+          </div>
+          <div class="input-field col s12">
+          <i class="material-icons prefix">lock</i>
+            <label for="password">Password </label>
+            <input type="password" class="validate" name="password" id="password" />
+          </div>
+        </div>
+          <label style='float: right;'>
+                <a class='pink-text' href='Login.html'><b>Inicio de Sesion</b></a>
+      </label>
+      </div>
+      <div class="card-action right-align">
+        <input type="reset" id="reset" class="btn-flat grey-text waves-effect">
+        <input type="submit" class="btn blue waves-effect waves-light" value="Enviar">
+      </div>
+    </form>
+  </div>
+</div>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script> 
+<!-- Compiled and minified JavaScript --> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script> 
+<script>
+$("#reset").on("click", function() {
+  $('label').removeClass('active');
+});
+</script>
+</body>
+</html>
